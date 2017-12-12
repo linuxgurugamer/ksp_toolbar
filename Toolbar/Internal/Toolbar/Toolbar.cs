@@ -1068,32 +1068,6 @@ namespace Toolbar {
 		}
 
 		private void toggleDropdownMenu() {
-            // dictionary.cfg
-            //
-            // #TOOLBAR_UI_CONFIGURE_VISIBLE_BUTTONS = "Configure Visible Buttons..."
-            // #TOOLBAR_UI_UNLOCK_POSITION_AND_SIZE = "Unlock Position and Size"
-            // #TOOLBAR_UI_LOCK_POSITION_AND_SIZE = "Lock Position and Size"
-            // #TOOLBAR_UI_UNLOCK_BUTTON_ORDER = "Unlock Button Order"
-            // #TOOLBAR_UI_LOCK_BUTTON_ORDER = "Lock Button Order"
-            // #TOOLBAR_UI_DEACTIVATE_AUTO_HIDE = "Deactivate Auto-Hide at Screen Edge"
-            // #TOOLBAR_UI_ACTIVATE_AUTO_HIDE = "Activate Auto-Hide at Screen Edge"
-            // #TOOLBAR_UI_HIDE_BORDER = "Hide Border"
-            // #TOOLBAR_UI_SHOW_BORDER = "Show Border"
-            // #TOOLBAR_UI_UNITY_SKIN = "Use Unity 'Smoke' Skin"
-            // #TOOLBAR_UI_KSP_SKIN = "Use KSP Skin"
-            // #TOOLBAR_UI_CREATE_NEW_FOLDER = "Create New Folder..."
-            // #TOOLBAR_UI_CREATE_NEW_TOOLBAR = "Create New Toolbar"
-            // #TOOLBAR_UI_DELETE_TOOLBAR = "Delete Toolbar..."
-            // #TOOLBAR_UI_DELETE_TOOLBAR_TITLE = "Delete Toolbar"
-            // #TOOLBAR_UI_DELETE_TOOLBAR_HINT = "Delete this toolbar?"
-            // #TOOLBAR_UI_ABOUT = "About the Toolbar Plugin..."
-            // #TOOLBAR_UI_NEW_FOLDER = "New Folder"
-            // #TOOLBAR_UI_EDIT_FOLDER_SETTINGS = "Edit Folder Settings"
-            // #TOOLBAR_UI_DELETE_FOLDER = "Delete Folder"
-            // #TOOLBAR_UI_DELETE_FOLDER_HINT = "Delete this folder? Buttons inside the folder will be moved to the main toolbar."
-            //
-            // eg : Localizer.Format("#ID")
-            //
 			if (dropdownMenu == null) {
 				dropdownMenu = new PopupMenu(new Vector2(rect.x + PADDING + getPosition(dropdownMenuButton).x, rect.y + rect.height + BUTTON_SPACING));
 
@@ -1348,32 +1322,6 @@ namespace Toolbar {
 		}
 
 		private void createFolder() {
-            // dictionary.cfg
-            //
-            // #TOOLBAR_UI_CONFIGURE_VISIBLE_BUTTONS = "Configure Visible Buttons..."
-            // #TOOLBAR_UI_UNLOCK_POSITION_AND_SIZE = "Unlock Position and Size"
-            // #TOOLBAR_UI_LOCK_POSITION_AND_SIZE = "Lock Position and Size"
-            // #TOOLBAR_UI_UNLOCK_BUTTON_ORDER = "Unlock Button Order"
-            // #TOOLBAR_UI_LOCK_BUTTON_ORDER = "Lock Button Order"
-            // #TOOLBAR_UI_DEACTIVATE_AUTO_HIDE = "Deactivate Auto-Hide at Screen Edge"
-            // #TOOLBAR_UI_ACTIVATE_AUTO_HIDE = "Activate Auto-Hide at Screen Edge"
-            // #TOOLBAR_UI_HIDE_BORDER = "Hide Border"
-            // #TOOLBAR_UI_SHOW_BORDER = "Show Border"
-            // #TOOLBAR_UI_UNITY_SKIN = "Use Unity 'Smoke' Skin"
-            // #TOOLBAR_UI_KSP_SKIN = "Use KSP Skin"
-            // #TOOLBAR_UI_CREATE_NEW_FOLDER = "Create New Folder..."
-            // #TOOLBAR_UI_CREATE_NEW_TOOLBAR = "Create New Toolbar"
-            // #TOOLBAR_UI_DELETE_TOOLBAR = "Delete Toolbar..."
-            // #TOOLBAR_UI_DELETE_TOOLBAR_TITLE = "Delete Toolbar"
-            // #TOOLBAR_UI_DELETE_TOOLBAR_HINT = "Delete this toolbar?"
-            // #TOOLBAR_UI_ABOUT = "About the Toolbar Plugin..."
-            // #TOOLBAR_UI_NEW_FOLDER = "New Folder"
-            // #TOOLBAR_UI_EDIT_FOLDER_SETTINGS = "Edit Folder Settings"
-            // #TOOLBAR_UI_DELETE_FOLDER = "Delete Folder"
-            // #TOOLBAR_UI_DELETE_FOLDER_HINT = "Delete this folder? Buttons inside the folder will be moved to the main toolbar."
-            //
-            // eg : Localizer.Format("#ID")
-            //
 			FolderSettingsDialog folderSettingsDialog = new FolderSettingsDialog("000_Toolbar/folder", Localizer.Format("#TOOLBAR_UI_NEW_FOLDER"));
 			folderSettingsDialog.OnOkClicked += () => {
 				createFolder("folder_" + new System.Random().Next(int.MaxValue), folderSettingsDialog.TexturePath, folderSettingsDialog.ToolTip, true);
@@ -1447,32 +1395,6 @@ namespace Toolbar {
 		}
 
 		private void openFolderButtonDropdownMenu(Toolbar folder, Vector2 pos) {
-            // dictionary.cfg
-            //
-            // #TOOLBAR_UI_CONFIGURE_VISIBLE_BUTTONS = "Configure Visible Buttons..."
-            // #TOOLBAR_UI_UNLOCK_POSITION_AND_SIZE = "Unlock Position and Size"
-            // #TOOLBAR_UI_LOCK_POSITION_AND_SIZE = "Lock Position and Size"
-            // #TOOLBAR_UI_UNLOCK_BUTTON_ORDER = "Unlock Button Order"
-            // #TOOLBAR_UI_LOCK_BUTTON_ORDER = "Lock Button Order"
-            // #TOOLBAR_UI_DEACTIVATE_AUTO_HIDE = "Deactivate Auto-Hide at Screen Edge"
-            // #TOOLBAR_UI_ACTIVATE_AUTO_HIDE = "Activate Auto-Hide at Screen Edge"
-            // #TOOLBAR_UI_HIDE_BORDER = "Hide Border"
-            // #TOOLBAR_UI_SHOW_BORDER = "Show Border"
-            // #TOOLBAR_UI_UNITY_SKIN = "Use Unity 'Smoke' Skin"
-            // #TOOLBAR_UI_KSP_SKIN = "Use KSP Skin"
-            // #TOOLBAR_UI_CREATE_NEW_FOLDER = "Create New Folder..."
-            // #TOOLBAR_UI_CREATE_NEW_TOOLBAR = "Create New Toolbar"
-            // #TOOLBAR_UI_DELETE_TOOLBAR = "Delete Toolbar..."
-            // #TOOLBAR_UI_DELETE_TOOLBAR_TITLE = "Delete Toolbar"
-            // #TOOLBAR_UI_DELETE_TOOLBAR_HINT = "Delete this toolbar?"
-            // #TOOLBAR_UI_ABOUT = "About the Toolbar Plugin..."
-            // #TOOLBAR_UI_NEW_FOLDER = "New Folder"
-            // #TOOLBAR_UI_EDIT_FOLDER_SETTINGS = "Edit Folder Settings"
-            // #TOOLBAR_UI_DELETE_FOLDER = "Delete Folder"
-            // #TOOLBAR_UI_DELETE_FOLDER_HINT = "Delete this folder? Buttons inside the folder will be moved to the main toolbar."
-            //
-            // eg : Localizer.Format("#ID")
-            //
 			dropdownMenu = new PopupMenu(pos);
 			Button editButton = Button.createMenuOption(Localizer.Format("#TOOLBAR_UI_EDIT_FOLDER_SETTINGS"));
 			editButton.OnClick += (e) => editFolder(folder);
@@ -1488,33 +1410,7 @@ namespace Toolbar {
 		}
 
 		private void deleteFolder(Toolbar folder) {
-		// dictionary.cfg
-        //
-        // #TOOLBAR_UI_CONFIGURE_VISIBLE_BUTTONS = "Configure Visible Buttons..."
-        // #TOOLBAR_UI_UNLOCK_POSITION_AND_SIZE = "Unlock Position and Size"
-        // #TOOLBAR_UI_LOCK_POSITION_AND_SIZE = "Lock Position and Size"
-        // #TOOLBAR_UI_UNLOCK_BUTTON_ORDER = "Unlock Button Order"
-        // #TOOLBAR_UI_LOCK_BUTTON_ORDER = "Lock Button Order"
-        // #TOOLBAR_UI_DEACTIVATE_AUTO_HIDE = "Deactivate Auto-Hide at Screen Edge"
-        // #TOOLBAR_UI_ACTIVATE_AUTO_HIDE = "Activate Auto-Hide at Screen Edge"
-        // #TOOLBAR_UI_HIDE_BORDER = "Hide Border"
-        // #TOOLBAR_UI_SHOW_BORDER = "Show Border"
-        // #TOOLBAR_UI_UNITY_SKIN = "Use Unity 'Smoke' Skin"
-        // #TOOLBAR_UI_KSP_SKIN = "Use KSP Skin"
-        // #TOOLBAR_UI_CREATE_NEW_FOLDER = "Create New Folder..."
-        // #TOOLBAR_UI_CREATE_NEW_TOOLBAR = "Create New Toolbar"
-        // #TOOLBAR_UI_DELETE_TOOLBAR = "Delete Toolbar..."
-        // #TOOLBAR_UI_DELETE_TOOLBAR_TITLE = "Delete Toolbar"
-        // #TOOLBAR_UI_DELETE_TOOLBAR_HINT = "Delete this toolbar?"
-        // #TOOLBAR_UI_ABOUT = "About the Toolbar Plugin..."
-        // #TOOLBAR_UI_NEW_FOLDER = "New Folder"
-        // #TOOLBAR_UI_EDIT_FOLDER_SETTINGS = "Edit Folder Settings"
-        // #TOOLBAR_UI_DELETE_FOLDER = "Delete Folder"
-        // #TOOLBAR_UI_DELETE_FOLDER_HINT = "Delete this folder? Buttons inside the folder will be moved to the main toolbar."
-        //
-        // eg : Localizer.Format("#ID")
-        //
-			ConfirmDialog.confirm(eg : Localizer.Format("#TOOLBAR_UI_DELETE_FOLDER"), Localizer.Format("#TOOLBAR_UI_DELETE_FOLDER_HINT"),
+			ConfirmDialog.confirm(Localizer.Format("#TOOLBAR_UI_DELETE_FOLDER"), Localizer.Format("#TOOLBAR_UI_DELETE_FOLDER_HINT"),
 				() => removeFolder(folder));
 		}
 
@@ -1616,32 +1512,6 @@ namespace Toolbar {
 		}
 
 		private void deleteToolbar() {
-		// dictionary.cfg
-        //
-        // #TOOLBAR_UI_CONFIGURE_VISIBLE_BUTTONS = "Configure Visible Buttons..."
-        // #TOOLBAR_UI_UNLOCK_POSITION_AND_SIZE = "Unlock Position and Size"
-        // #TOOLBAR_UI_LOCK_POSITION_AND_SIZE = "Lock Position and Size"
-        // #TOOLBAR_UI_UNLOCK_BUTTON_ORDER = "Unlock Button Order"
-        // #TOOLBAR_UI_LOCK_BUTTON_ORDER = "Lock Button Order"
-        // #TOOLBAR_UI_DEACTIVATE_AUTO_HIDE = "Deactivate Auto-Hide at Screen Edge"
-        // #TOOLBAR_UI_ACTIVATE_AUTO_HIDE = "Activate Auto-Hide at Screen Edge"
-        // #TOOLBAR_UI_HIDE_BORDER = "Hide Border"
-        // #TOOLBAR_UI_SHOW_BORDER = "Show Border"
-        // #TOOLBAR_UI_UNITY_SKIN = "Use Unity 'Smoke' Skin"
-        // #TOOLBAR_UI_KSP_SKIN = "Use KSP Skin"
-        // #TOOLBAR_UI_CREATE_NEW_FOLDER = "Create New Folder..."
-        // #TOOLBAR_UI_CREATE_NEW_TOOLBAR = "Create New Toolbar"
-        // #TOOLBAR_UI_DELETE_TOOLBAR = "Delete Toolbar..."
-        // #TOOLBAR_UI_DELETE_TOOLBAR_TITLE = "Delete Toolbar"
-        // #TOOLBAR_UI_DELETE_TOOLBAR_HINT = "Delete this toolbar?"
-        // #TOOLBAR_UI_ABOUT = "About the Toolbar Plugin..."
-        // #TOOLBAR_UI_NEW_FOLDER = "New Folder"
-        // #TOOLBAR_UI_EDIT_FOLDER_SETTINGS = "Edit Folder Settings"
-        // #TOOLBAR_UI_DELETE_FOLDER = "Delete Folder"
-        // #TOOLBAR_UI_DELETE_FOLDER_HINT = "Delete this folder? Buttons inside the folder will be moved to the main toolbar."
-        //
-        // eg : Localizer.Format("#ID")
-        //
 			ConfirmDialog.confirm(Localizer.Format("#TOOLBAR_UI_DELETE_TOOLBAR_TITLE"), Localizer.Format("#TOOLBAR_UI_DELETE_TOOLBAR_HINT"),
 				() => {
 					ToolbarManager.InternalInstance.destroyToolbar(this);

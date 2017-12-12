@@ -42,15 +42,6 @@ namespace Toolbar {
 			this.visibleButtonIds = visibleButtonIds;
 
 			Rect = new Rect(300, 300, 0, 0);
-			// dictionary.cfg
-            //
-            // #TOOLBAR_UI_CONFIG_VISIBLE_TITLE = "Toolbar Button Visibility"
-            // #TOOLBAR_UI_CONFIG_VISIBLE_BUTTON = "Configure which buttons should be visible in the current game scene."
-            // #TOOLBAR_UI_CONFIG_VISIBLE_BUTTON_NOTE = "Note: Plugins may still decide to hide buttons from any game scene even if those buttons are active here."
-            // #TOOLBAR_UI_CLOSE = "Close"
-            //
-            // eg : Localizer.Format("#ID")
-            //
 			Title = Localizer.Format("#TOOLBAR_UI_CONFIG_VISIBLE_TITLE");
 			Dialog = true;
 
@@ -64,15 +55,6 @@ namespace Toolbar {
 
 		internal override void drawContents() {
 			GUILayout.BeginVertical();
-                // dictionary.cfg
-                //
-                // #TOOLBAR_UI_CONFIG_VISIBLE_TITLE = "Toolbar Button Visibility"
-                // #TOOLBAR_UI_CONFIG_VISIBLE_BUTTON = "Configure which buttons should be visible in the current game scene."
-                // #TOOLBAR_UI_CONFIG_VISIBLE_BUTTON_NOTE = "Note: Plugins may still decide to hide buttons from any game scene even if those buttons are active here."
-                // #TOOLBAR_UI_CLOSE = "Close"
-                //
-                // eg : Localizer.Format("#ID")
-                //
 				GUILayout.Label(Localizer.Format("#TOOLBAR_UI_CONFIG_VISIBLE_BUTTON"));
 				GUILayout.Label(Localizer.Format("#TOOLBAR_UI_CONFIG_VISIBLE_BUTTON_NOTE"));
 
@@ -116,15 +98,6 @@ namespace Toolbar {
 
 				GUILayout.BeginHorizontal();
 					GUILayout.FlexibleSpace();
-					// dictionary.cfg
-                    //
-                    // #TOOLBAR_UI_CONFIG_VISIBLE_TITLE = "Toolbar Button Visibility"
-                    // #TOOLBAR_UI_CONFIG_VISIBLE_BUTTON = "Configure which buttons should be visible in the current game scene."
-                    // #TOOLBAR_UI_CONFIG_VISIBLE_BUTTON_NOTE = "Note: Plugins may still decide to hide buttons from any game scene even if those buttons are active here."
-                    // #TOOLBAR_UI_CLOSE = "Close"
-                    //
-                    // eg : Localizer.Format("#ID")
-                    //
 					if (GUILayout.Button(Localizer.Format("#TOOLBAR_UI_CLOSE"))) {
 						destroy();
 					}

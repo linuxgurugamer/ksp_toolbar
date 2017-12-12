@@ -99,10 +99,6 @@ namespace Toolbar {
 
 				GUILayout.BeginHorizontal();
 					GUILayout.FlexibleSpace();
-					// dictionary.cfg
-                    // #TOOLBAR_UI_CANCEL = "Cancel"
-                    //
-                    // eg : Localizer.Format("#ID")
 					if (GUILayout.Button(Localizer.Format("#TOOLBAR_UI_CANCEL"))) {
 						destroy();
 					}

@@ -37,12 +37,10 @@ namespace Toolbar {
 		private Action onCancel;
 		private string okText;
 		private string cancelText;
-		// dictionary.cfg
-		// #TOOLBAR_UI_OK = "OK"
-        // #TOOLBAR_UI_CANCEL = "Cancel"
-        //
-        // eg : Localizer.Format("#ID")
-		internal ConfirmDialog(string title, string text, Action onOk, Action onCancel, string okText = Localizer.Format("#TOOLBAR_UI_OK"), string cancelText = Localizer.Format("#TOOLBAR_UI_CANCEL")) : base() {
+
+		private string locStringOk = Localizer.Format("#TOOLBAR_UI_OK");
+		private string locStringCancel = Localizer.Format("#TOOLBAR_UI_CANCEL");
+		internal ConfirmDialog(string title, string text, Action onOk, Action onCancel, string okText = locStringOk, string cancelText = locStringCancel) : base() {
 			Rect = new Rect(300, 300, Screen.width / 4, 0);
 			Title = title;
 			Dialog = true;
@@ -75,13 +73,8 @@ namespace Toolbar {
 			GUILayout.EndVertical();
 		}
 
-		// dictionary.cfg
-		// #TOOLBAR_UI_OK = "OK"
-        // #TOOLBAR_UI_CANCEL = "Cancel"
-        //
-        // eg : Localizer.Format("#ID")
-		internal static void confirm(string title, string text, Action onOk, string okText = Localizer.Format("#TOOLBAR_UI_OK"), string cancelText = Localizer.Format("#TOOLBAR_UI_CANCEL")) {
-			ConfirmDialog dialog = null;
+		ConfirmDialog dialog = null;
+		internal static void confirm(string title, string text, Action onOk, string okText = locStringOk, string cancelText = locStringCancel) {
 			dialog = new ConfirmDialog(title, text,
 				() => {
 					dialog.destroy();
