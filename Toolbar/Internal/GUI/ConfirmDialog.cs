@@ -73,7 +73,6 @@ namespace Toolbar {
 			GUILayout.EndVertical();
 		}
 
-		ConfirmDialog dialog = null;
 		internal static void confirm(string title, string text, Action onOk, string okText = locStringOk, string cancelText = locStringCancel) {
 			dialog = new ConfirmDialog(title, text,
 				() => {
