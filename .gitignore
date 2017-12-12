@@ -185,7 +185,8 @@ FakesAssemblies/
 .LSOverride
 
 # Icon must ends with two \r.
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -220,3 +221,8 @@ $RECYCLE.BIN/
 *.swp
 *.dll
 *.pdb
+.idea/ksp_toolbar.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml

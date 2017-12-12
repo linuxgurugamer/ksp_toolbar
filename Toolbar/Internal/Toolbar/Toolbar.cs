@@ -1073,7 +1073,7 @@ namespace Toolbar {
 
 				bool regularEntriesEnabled = rectLocked && buttonOrderLocked;
 
-				Button visibleButtonsButton = Button.createMenuOption("Configure Visible Buttons...");
+				Button visibleButtonsButton = Button.createMenuOption(Localizer.Format("#TOOLBAR_UI_CONFIGURE_VISIBLE_BUTTONS"));
 				visibleButtonsButton.command.Enabled = regularEntriesEnabled && (visibleButtonsSelector == null);
 				visibleButtonsButton.OnClick += (e) => {
 					toggleVisibleButtonsSelector();
@@ -1082,7 +1082,7 @@ namespace Toolbar {
 
 				dropdownMenu += Separator.Instance;
 
-				Button toggleRectLockButton = Button.createMenuOption(rectLocked ? "Unlock Position and Size" : "Lock Position and Size");
+				Button toggleRectLockButton = Button.createMenuOption(rectLocked ? Localizer.Format("#TOOLBAR_UI_UNLOCK_POSITION_AND_SIZE") : Localizer.Format("#TOOLBAR_UI_LOCK_POSITION_AND_SIZE"));
 				toggleRectLockButton.OnClick += (e) => {
 					rectLocked = !rectLocked;
 					draggable.Enabled = !rectLocked;
@@ -1103,7 +1103,7 @@ namespace Toolbar {
 				toggleRectLockButton.command.Enabled = buttonOrderLocked;
 				dropdownMenu += toggleRectLockButton;
 
-				Button toggleButtonOrderLockButton = Button.createMenuOption(buttonOrderLocked ? "Unlock Button Order" : "Lock Button Order");
+				Button toggleButtonOrderLockButton = Button.createMenuOption(buttonOrderLocked ? Localizer.Format("#TOOLBAR_UI_UNLOCK_BUTTON_ORDER") : Localizer.Format("#TOOLBAR_UI_LOCK_BUTTON_ORDER"));
 				toggleButtonOrderLockButton.OnClick += (e) => {
 					buttonOrderLocked = !buttonOrderLocked;
 
@@ -1124,7 +1124,7 @@ namespace Toolbar {
 				toggleButtonOrderLockButton.command.Enabled = rectLocked;
 				dropdownMenu += toggleButtonOrderLockButton;
 
-				Button toggleAutoHideButton = Button.createMenuOption(autoHide ? "Deactivate Auto-Hide at Screen Edge" : "Activate Auto-Hide at Screen Edge");
+				Button toggleAutoHideButton = Button.createMenuOption(autoHide ? Localizer.Format("#TOOLBAR_UI_DEACTIVATE_AUTO_HIDE") : Localizer.Format("#TOOLBAR_UI_ACTIVATE_AUTO_HIDE"));
 				toggleAutoHideButton.OnClick += (e) => {
 					autoHide = !autoHide;
 					fireChange();
@@ -1132,7 +1132,7 @@ namespace Toolbar {
 				toggleAutoHideButton.command.Enabled = regularEntriesEnabled && (autoHide || AtScreenEdge);
 				dropdownMenu += toggleAutoHideButton;
 
-				Button toggleDrawBorderButton = Button.createMenuOption(showBorder ? "Hide Border" : "Show Border");
+				Button toggleDrawBorderButton = Button.createMenuOption(showBorder ? Localizer.Format("#TOOLBAR_UI_HIDE_BORDER") : Localizer.Format("#TOOLBAR_UI_SHOW_BORDER"));
 				toggleDrawBorderButton.OnClick += (e) => {
 					showBorder = !showBorder;
 					foreach (Toolbar folder in folders.Values) {
@@ -1143,7 +1143,7 @@ namespace Toolbar {
 				toggleDrawBorderButton.command.Enabled = regularEntriesEnabled;
 				dropdownMenu += toggleDrawBorderButton;
 
-				Button toggleKSPSkinButton = Button.createMenuOption(UseKSPSkin ? "Use Unity 'Smoke' Skin" : "Use KSP Skin");
+				Button toggleKSPSkinButton = Button.createMenuOption(UseKSPSkin ? Localizer.Format("#TOOLBAR_UI_UNITY_SKIN") : Localizer.Format("#TOOLBAR_UI_KSP_SKIN"));
 				toggleKSPSkinButton.OnClick += (e) => {
 					UseKSPSkin = !UseKSPSkin;
 					foreach (Toolbar folder in folders.Values) {
@@ -1156,26 +1156,26 @@ namespace Toolbar {
 
 				dropdownMenu += Separator.Instance;
 
-				Button createFolderButton = Button.createMenuOption("Create New Folder...");
+				Button createFolderButton = Button.createMenuOption(Localizer.Format("#TOOLBAR_UI_CREATE_NEW_FOLDER"));
 				createFolderButton.OnClick += (e) => createFolder();
 				createFolderButton.command.Enabled = regularEntriesEnabled;
 				dropdownMenu += createFolderButton;
 
 				dropdownMenu += Separator.Instance;
 
-				Button createToolbarButton = Button.createMenuOption("Create New Toolbar");
+				Button createToolbarButton = Button.createMenuOption(Localizer.Format("#TOOLBAR_UI_CREATE_NEW_TOOLBAR"));
 				createToolbarButton.OnClick += (e) => createToolbar();
 				createToolbarButton.command.Enabled = regularEntriesEnabled;
 				dropdownMenu += createToolbarButton;
 
-				Button deleteToolbarButton = Button.createMenuOption("Delete Toolbar...");
+				Button deleteToolbarButton = Button.createMenuOption(Localizer.Format("#TOOLBAR_UI_DELETE_TOOLBAR"));
 				deleteToolbarButton.OnClick += (e) => deleteToolbar();
 				deleteToolbarButton.command.Enabled = regularEntriesEnabled && (ToolbarManager.InternalInstance.ToolbarsCount > 1);
 				dropdownMenu += deleteToolbarButton;
 
 				dropdownMenu += Separator.Instance;
 
-				Button aboutButton = Button.createMenuOption("About the Toolbar Plugin...");
+				Button aboutButton = Button.createMenuOption(Localizer.Format("#TOOLBAR_UI_ABOUT"));
 				aboutButton.OnClick += (e) => Application.OpenURL(ToolbarManager.FORUM_THREAD_URL);
 				dropdownMenu += aboutButton;
 
@@ -1322,7 +1322,7 @@ namespace Toolbar {
 		}
 
 		private void createFolder() {
-			FolderSettingsDialog folderSettingsDialog = new FolderSettingsDialog("000_Toolbar/folder", "New Folder");
+			FolderSettingsDialog folderSettingsDialog = new FolderSettingsDialog("000_Toolbar/folder", Localizer.Format("#TOOLBAR_UI_NEW_FOLDER"));
 			folderSettingsDialog.OnOkClicked += () => {
 				createFolder("folder_" + new System.Random().Next(int.MaxValue), folderSettingsDialog.TexturePath, folderSettingsDialog.ToolTip, true);
 			};
@@ -1396,12 +1396,10 @@ namespace Toolbar {
 
 		private void openFolderButtonDropdownMenu(Toolbar folder, Vector2 pos) {
 			dropdownMenu = new PopupMenu(pos);
-
-			Button editButton = Button.createMenuOption("Edit Folder Settings");
+			Button editButton = Button.createMenuOption(Localizer.Format("#TOOLBAR_UI_EDIT_FOLDER_SETTINGS"));
 			editButton.OnClick += (e) => editFolder(folder);
 			dropdownMenu += editButton;
-
-			Button deleteButton = Button.createMenuOption("Delete Folder");
+			Button deleteButton = Button.createMenuOption(Localizer.Format("#TOOLBAR_UI_DELETE_FOLDER"));
 			deleteButton.OnClick += (e) => deleteFolder(folder);
 			dropdownMenu += deleteButton;
 
@@ -1412,7 +1410,7 @@ namespace Toolbar {
 		}
 
 		private void deleteFolder(Toolbar folder) {
-			ConfirmDialog.confirm("Delete Folder", "Delete this folder? Buttons inside the folder will be moved to the main toolbar.",
+			ConfirmDialog.confirm(Localizer.Format("#TOOLBAR_UI_DELETE_FOLDER"), Localizer.Format("#TOOLBAR_UI_DELETE_FOLDER_HINT"),
 				() => removeFolder(folder));
 		}
 
@@ -1514,7 +1512,7 @@ namespace Toolbar {
 		}
 
 		private void deleteToolbar() {
-			ConfirmDialog.confirm("Delete Toolbar", "Delete this toolbar?",
+			ConfirmDialog.confirm(Localizer.Format("#TOOLBAR_UI_DELETE_TOOLBAR_TITLE"), Localizer.Format("#TOOLBAR_UI_DELETE_TOOLBAR_HINT"),
 				() => {
 					ToolbarManager.InternalInstance.destroyToolbar(this);
 				});

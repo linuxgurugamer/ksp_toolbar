@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using KSP.Localization;
 
 namespace Toolbar {
 	internal class VisibleButtonsSelector : AbstractWindow {
@@ -41,7 +42,7 @@ namespace Toolbar {
 			this.visibleButtonIds = visibleButtonIds;
 
 			Rect = new Rect(300, 300, 0, 0);
-			Title = "Toolbar Button Visibility";
+			Title = Localizer.Format("#TOOLBAR_UI_CONFIG_VISIBLE_TITLE");
 			Dialog = true;
 
 			List<Command> commands = new List<Command>(ToolbarManager.InternalInstance.Commands.Where(c => !c.IsInternal));
@@ -54,9 +55,8 @@ namespace Toolbar {
 
 		internal override void drawContents() {
 			GUILayout.BeginVertical();
-
-				GUILayout.Label("Configure which buttons should be visible in the current game scene.");
-				GUILayout.Label("Note: Plugins may still decide to hide buttons from any game scene even if those buttons are active here.");
+				GUILayout.Label(Localizer.Format("#TOOLBAR_UI_CONFIG_VISIBLE_BUTTON"));
+				GUILayout.Label(Localizer.Format("#TOOLBAR_UI_CONFIG_VISIBLE_BUTTON_NOTE"));
 
 				GUILayout.Space(5);
 
@@ -98,7 +98,7 @@ namespace Toolbar {
 
 				GUILayout.BeginHorizontal();
 					GUILayout.FlexibleSpace();
-					if (GUILayout.Button("Close")) {
+					if (GUILayout.Button(Localizer.Format("#TOOLBAR_UI_CLOSE"))) {
 						destroy();
 					}
 				GUILayout.EndHorizontal();

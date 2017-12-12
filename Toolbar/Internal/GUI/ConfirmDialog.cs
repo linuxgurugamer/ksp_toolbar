@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using KSP.Localization;
 
 namespace Toolbar {
 	internal class ConfirmDialog : AbstractWindow {
@@ -37,7 +38,9 @@ namespace Toolbar {
 		private string okText;
 		private string cancelText;
 
-		internal ConfirmDialog(string title, string text, Action onOk, Action onCancel, string okText = "OK", string cancelText = "Cancel") : base() {
+		private string locStringOk = Localizer.Format("#TOOLBAR_UI_OK");
+		private string locStringCancel = Localizer.Format("#TOOLBAR_UI_CANCEL");
+		internal ConfirmDialog(string title, string text, Action onOk, Action onCancel, string okText = locStringOk, string cancelText = locStringCancel) : base() {
 			Rect = new Rect(300, 300, Screen.width / 4, 0);
 			Title = title;
 			Dialog = true;
@@ -70,8 +73,7 @@ namespace Toolbar {
 			GUILayout.EndVertical();
 		}
 
-		internal static void confirm(string title, string text, Action onOk, string okText = "OK", string cancelText = "Cancel") {
-			ConfirmDialog dialog = null;
+		internal static void confirm(string title, string text, Action onOk, string okText = locStringOk, string cancelText = locStringCancel) {
 			dialog = new ConfirmDialog(title, text,
 				() => {
 					dialog.destroy();

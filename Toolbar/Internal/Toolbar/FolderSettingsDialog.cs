@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using KSP.Localization;
 
 namespace Toolbar {
 	internal class FolderSettingsDialog : AbstractWindow {
@@ -49,7 +50,7 @@ namespace Toolbar {
 			this.ToolTip = toolTip;
 
 			Rect = new Rect(300, 300, Mathf.Max(Screen.width / 4, 350), 0);
-			Title = "Folder Settings";
+			Title = Localizer.Format("#TOOLBAR_UI_FOLDER_SETTINGS");
 			Dialog = true;
 			Modal = true;
 
@@ -63,7 +64,7 @@ namespace Toolbar {
 		}
 
 		private void openIconPicker() {
-			IconPickerDialog dlg = new IconPickerDialog("Select Icon", new Vector2(Button.MAX_TEX_WIDTH, Button.MAX_TEX_HEIGHT),
+			IconPickerDialog dlg = new IconPickerDialog(Localizer.Format("#TOOLBAR_UI_SELECT_ICON"), new Vector2(Button.MAX_TEX_WIDTH, Button.MAX_TEX_HEIGHT),
 				(texturePath) => {
 					iconPickerCommand.TexturePath = texturePath;
 				});
@@ -79,12 +80,12 @@ namespace Toolbar {
 				GUI.enabled = iconPickerCommand.Enabled;
 
 				GUILayout.BeginHorizontal();
-					GUILayout.Label("Button icon:", GUILayout.ExpandWidth(false));
+					GUILayout.Label(Localizer.Format("#TOOLBAR_UI_BUTTON_ICON"), GUILayout.ExpandWidth(false));
 					iconPickerButton.drawButton();
 				GUILayout.EndHorizontal();
 
 				GUILayout.BeginHorizontal();
-					GUILayout.Label("Button tooltip text:", GUILayout.ExpandWidth(false));
+					GUILayout.Label(Localizer.Format("#TOOLBAR_UI_BUTTON_TOOLTIP_TEXT"), GUILayout.ExpandWidth(false));
 					ToolTip = GUILayout.TextField(ToolTip, GUILayout.ExpandWidth(true));
 				GUILayout.EndHorizontal();
 
@@ -92,10 +93,10 @@ namespace Toolbar {
 
 				GUILayout.BeginHorizontal();
 					GUILayout.FlexibleSpace();
-					if (GUILayout.Button("OK")) {
+					if (GUILayout.Button(Localizer.Format("#TOOLBAR_UI_OK"))) {
 						fireButtonClicked(OnOkClicked);
 					}
-					if (GUILayout.Button("Cancel")) {
+					if (GUILayout.Button(Localizer.Format("#TOOLBAR_UI_CANCEL"))) {
 						fireButtonClicked(OnCancelClicked);
 					}
 				GUILayout.EndHorizontal();
