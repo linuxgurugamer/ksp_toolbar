@@ -1,17 +1,20 @@
 
 @echo off
 
-set ProjectDir=Toolbar
-set Targetdir=GameData\000_Toolbar
-
+rem H is the destination game folder
+rem GAMEDIR is the name of the mod folder (usually the mod name)
+rem GAMEDATA is the name of the local GameData
+rem VERSIONFILE is the name of the version file, usually the same as GAMEDATA,
+rem    but not always
 
 set H=R:\KSP_1.3.1_dev
-echo %H%
+set GAMEDIR=000_Toolbar
+set GAMEDATA="GameData\"
+set VERSIONFILE=Toolbar.version
 
-copy /Y %ProjectDir%\obj\Debug\aaa_Toolbar.dll %Targetdir%\Toolbar.dll
+copy /Y "%1%2" "%GAMEDATA%\%GAMEDIR%\Plugins"
+copy /Y %VERSIONFILE% %GAMEDATA%\%GAMEDIR%
 
+xcopy /y /s /I %GAMEDATA%\%GAMEDIR% "%H%\GameData\%GAMEDIR%"
 
-
-cd GameData
-mkdir "%H%\GameData\000_Toolbar"
-xcopy /y /s 000_Toolbar "%H%\GameData\000_Toolbar"
+pause

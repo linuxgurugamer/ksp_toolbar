@@ -114,7 +114,6 @@
     <None Include="etc\new-button-available.psd" />
     <None Include="etc\resize-cursor.psd" />
     <None Include="etc\toolbar-dropdown.psd" />
-    <None Include="etc\Toolbar.version" />
     <None Include="etc\update-available.psd" />
   </ItemGroup>
   <ItemGroup>
@@ -139,17 +138,14 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>rem xcopy /Y $(ProjectDir)etc\*.png $(TargetDir)
-xcopy /Y $(ProjectDir)etc\Toolbar.version $(TargetDir)
-xcopy /Y $(ProjectDir)etc\MiniAVC.dll $(TargetDir)
-del $(TargetDir)*.pdb $(TargetDir)UnityEngine.dll $(TargetDir)Assembly-CSharp*.dll $(TargetDir)Mono.*.dll $(TargetDir)TDx*.dll $(TargetDir)TrackIRUnity.dll $(TargetDir)KSPAssets.dll $(TargetDir)KSPUtil.dll $(TargetDir)SaveUpgradePipeline.Core.dll $(TargetDir)UnityEngine.xml $(TargetDir)UnityEngine.UI.dll $(TargetDir)Vectrosity.dll
-
-start /D D:\Users\jbb\github\ksp_toolbar\  /WAIT deploy.bat
+    <PostBuildEvent>
+start /D D:\Users\jbb\github\ksp_toolbar /WAIT deploy.bat  $(TargetDir) $(TargetFileName)
 
 if $(ConfigurationName) == Release (
-start /D D:\Users\jbb\github\ksp_toolbar\  /WAIT buildRelease.bat
-)
-</PostBuildEvent>
+
+	start /D D:\Users\jbb\github\ksp_toolbar /WAIT buildRelease.bat $(TargetDir) $(TargetFileName)
+
+)</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolbar", "Toolbar\Toolbar.csproj", "{E48DD7E6-5016-4ECF-A2C8-73A40BEAC326}"
 EndProject
@@ -12,8 +12,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{293FCA15-B1A7-48B1-80A4-85B8C1175783}"
 	ProjectSection(SolutionItems) = preProject
 		buildRelease.bat = buildRelease.bat
+		Changelog.txt = Changelog.txt
 		deploy.bat = deploy.bat
-		Toolbar\etc\Toolbar.version = Toolbar\etc\Toolbar.version
+		jenkins.txt = jenkins.txt
+		README.md = README.md
+		Toolbar.version = Toolbar.version
 	EndProjectSection
 EndProject
 Global
@@ -35,5 +38,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {29A7462E-D1F5-4C97-8CFA-1604D1C86025}
 	EndGlobalSection
 EndGlobal

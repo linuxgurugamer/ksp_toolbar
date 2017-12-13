@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using KSP.Localization;
 
 namespace Toolbar {
 	internal class VisibleButtonsSelector : AbstractWindow {
@@ -41,7 +42,16 @@ namespace Toolbar {
 			this.visibleButtonIds = visibleButtonIds;
 
 			Rect = new Rect(300, 300, 0, 0);
-			Title = "Toolbar Button Visibility";
+			// dictionary.cfg
+            //
+            // #TOOLBAR_UI_CONFIG_VISIBLE_TITLE = "Toolbar Button Visibility"
+            // #TOOLBAR_UI_CONFIG_VISIBLE_BUTTON = "Configure which buttons should be visible in the current game scene."
+            // #TOOLBAR_UI_CONFIG_VISIBLE_BUTTON_NOTE = "Note: Plugins may still decide to hide buttons from any game scene even if those buttons are active here."
+            // #TOOLBAR_UI_CLOSE = "Close"
+            //
+            // eg : Localizer.Format("#ID")
+            //
+			Title = Localizer.Format("#TOOLBAR_UI_CONFIG_VISIBLE_TITLE");
 			Dialog = true;
 
 			List<Command> commands = new List<Command>(ToolbarManager.InternalInstance.Commands.Where(c => !c.IsInternal));
@@ -54,9 +64,17 @@ namespace Toolbar {
 
 		internal override void drawContents() {
 			GUILayout.BeginVertical();
-
-				GUILayout.Label("Configure which buttons should be visible in the current game scene.");
-				GUILayout.Label("Note: Plugins may still decide to hide buttons from any game scene even if those buttons are active here.");
+                // dictionary.cfg
+                //
+                // #TOOLBAR_UI_CONFIG_VISIBLE_TITLE = "Toolbar Button Visibility"
+                // #TOOLBAR_UI_CONFIG_VISIBLE_BUTTON = "Configure which buttons should be visible in the current game scene."
+                // #TOOLBAR_UI_CONFIG_VISIBLE_BUTTON_NOTE = "Note: Plugins may still decide to hide buttons from any game scene even if those buttons are active here."
+                // #TOOLBAR_UI_CLOSE = "Close"
+                //
+                // eg : Localizer.Format("#ID")
+                //
+				GUILayout.Label(Localizer.Format("#TOOLBAR_UI_CONFIG_VISIBLE_BUTTON"));
+				GUILayout.Label(Localizer.Format("#TOOLBAR_UI_CONFIG_VISIBLE_BUTTON_NOTE"));
 
 				GUILayout.Space(5);
 
@@ -98,7 +116,16 @@ namespace Toolbar {
 
 				GUILayout.BeginHorizontal();
 					GUILayout.FlexibleSpace();
-					if (GUILayout.Button("Close")) {
+					// dictionary.cfg
+                    //
+                    // #TOOLBAR_UI_CONFIG_VISIBLE_TITLE = "Toolbar Button Visibility"
+                    // #TOOLBAR_UI_CONFIG_VISIBLE_BUTTON = "Configure which buttons should be visible in the current game scene."
+                    // #TOOLBAR_UI_CONFIG_VISIBLE_BUTTON_NOTE = "Note: Plugins may still decide to hide buttons from any game scene even if those buttons are active here."
+                    // #TOOLBAR_UI_CLOSE = "Close"
+                    //
+                    // eg : Localizer.Format("#ID")
+                    //
+					if (GUILayout.Button(Localizer.Format("#TOOLBAR_UI_CLOSE"))) {
 						destroy();
 					}
 				GUILayout.EndHorizontal();

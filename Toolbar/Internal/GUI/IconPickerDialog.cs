@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using KSP.Localization;
 
 namespace Toolbar {
 	internal class IconPickerDialog : AbstractWindow {
@@ -98,7 +99,11 @@ namespace Toolbar {
 
 				GUILayout.BeginHorizontal();
 					GUILayout.FlexibleSpace();
-					if (GUILayout.Button("Cancel")) {
+					// dictionary.cfg
+                    // #TOOLBAR_UI_CANCEL = "Cancel"
+                    //
+                    // eg : Localizer.Format("#ID")
+					if (GUILayout.Button(Localizer.Format("#TOOLBAR_UI_CANCEL"))) {
 						destroy();
 					}
 				GUILayout.EndHorizontal();

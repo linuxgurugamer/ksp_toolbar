@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\Progs\KSP_1_2_0_dev\GameData\000_Toolbar\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -65,8 +65,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>del $(TargetDir)*.pdb $(TargetDir)UnityEngine.dll $(TargetDir)Assembly-CSharp*.dll $(TargetDir)Mono.*.dll $(TargetDir)TDx*.dll $(TargetDir)TrackIRUnity.dll $(TargetDir)KSPAssets.dll $(TargetDir)KSPUtil.dll $(TargetDir)SaveUpgradePipeline.Core.dll $(TargetDir)UnityEngine.xml $(TargetDir)UnityEngine.UI.dll $(TargetDir)Vectrosity.dll
-xcopy /Y $(ProjectDir)etc\*.png $(TargetDir)</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

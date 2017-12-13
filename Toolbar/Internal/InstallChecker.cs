@@ -37,7 +37,7 @@ namespace Toolbar {
 		internal void Start() {
 			string executingAssemblyName = Assembly.GetExecutingAssembly().GetName().Name;
 			IEnumerable<AssemblyLoader.LoadedAssembly> assemblies = AssemblyLoader.loadedAssemblies
-					.Where(a => (a.assembly.GetName().Name == executingAssemblyName) && (a.url != "000_Toolbar"));
+					.Where(a => (a.assembly.GetName().Name == executingAssemblyName) && (a.url != "000_Toolbar/Plugins"));
 			if (assemblies.Any()) {
 				Uri rootUri = new Uri(Path.GetFullPath(KSPUtil.ApplicationRootPath));
 				IEnumerable<string> badPaths = assemblies
