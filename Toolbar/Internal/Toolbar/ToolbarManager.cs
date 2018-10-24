@@ -32,7 +32,7 @@ using UnityEngine;
 namespace Toolbar {
 	[KSPAddonFixed(KSPAddon.Startup.EveryScene, true, typeof(ToolbarManager))]
 	public partial class ToolbarManager : MonoBehaviour, IToolbarManager {
-		private static readonly string SETTINGS_FILE = KSPUtil.ApplicationRootPath + "GameData/toolbar-settings.dat";
+		private static string SETTINGS_FILE = "GameData/toolbar-settings.dat"; // Full path initialized in Awake()
 		internal const string FORUM_THREAD_URL = "https://forum.kerbalspaceprogram.com/index.php?/topic/161857-131-toolbar-continued";
 		internal const string NAMESPACE_INTERNAL = "__TOOLBAR_INTERNAL";
 
@@ -67,6 +67,16 @@ namespace Toolbar {
 
 		internal ToolbarManager() {
 			Log.trace("ToolbarManager()");
+		}
+
+		private void Awake()
+		{
+			//
+			// Perform any initializations here which require calling into the Unity APIs.
+			// Unity spec does not allow calling Unity APIs from field initializers or constructors.
+			//
+
+			SETTINGS_FILE = KSPUtil.ApplicationRootPath + SETTINGS_FILE;
 
 			if (Instance == null) {
 				Instance = this;
