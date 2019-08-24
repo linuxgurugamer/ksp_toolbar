@@ -124,8 +124,6 @@ namespace Toolbar {
                 {
                     Log.error("Cannot find texture to load:" + fileNamePath);
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -159,15 +157,21 @@ namespace Toolbar {
 
         internal static Texture2D GetTexture(string texturePath)
         {
-            Texture2D tmptexture;
+            Texture2D tmptexture = null;
             string filePath = TexPathname(texturePath);
             if (!Utils.TextureFileExists(filePath))
             {
-                tmptexture = GameDatabase.Instance.GetTexture(texturePath, false);
+                if (GameDatabase.Instance.ExistsTexture(texturePath))
+                    tmptexture = GameDatabase.Instance.GetTexture(texturePath, false);
+                else
+                    Log.info("GetTexture, texture not found in GameDatabase: [" + texturePath + "]");
             }
             else
             {
                 tmptexture = GetTextureFromFile(texturePath, false);
+
+                if (tmptexture == null)
+                    Log.info("GetTexture, texture not found, texturePath: " + texturePath);
             }
             return tmptexture;
         }
@@ -183,7 +187,7 @@ namespace Toolbar {
                         return true;
 
             }
-            return true;
+            return false;
         }
 
         internal static string TexPathname(string path)
@@ -198,7 +202,7 @@ namespace Toolbar {
 
             if (LoadImageFromFile(ref tex, TexPathname(path)))
                 return tex;
-            Log.error("GetTextureFromFile, errorloading: " + TexPathname(path));
+            Log.error("GetTextureFromFile, error loading: " + TexPathname(path));
             return null;
         }
     }

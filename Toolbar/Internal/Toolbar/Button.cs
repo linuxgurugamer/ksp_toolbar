@@ -149,6 +149,7 @@ namespace Toolbar
                         }
                         else
                         {
+                            Log.info("TexturePath: " + command.TexturePath);
                             tmptexture_ = Utils.GetTexture(command.TexturePath);
                         }
                         if (tmptexture_ != null)

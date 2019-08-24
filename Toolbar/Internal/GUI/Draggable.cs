@@ -68,6 +68,7 @@ namespace Toolbar {
 			get {
 				if (cursorTexture_ == null) {
 					cursorTexture_ = Utils.GetTextureFromFile(cursorTexturePath, false);
+                    Log.info("CursorTexture, GetTextureFromfile, cursorTexturePath: " + cursorTexturePath);
 				}
 				return cursorTexture_;
 			}

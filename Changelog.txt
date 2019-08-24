@@ -109,3 +109,6 @@
 1.7.22.1
 	Fixed nullref when loading buttons
 	Fixed check for file existance
+
+1.7.22.2
+	Fixed issue with ScienceAlert & X-Science buttons on the toolbar being purple
