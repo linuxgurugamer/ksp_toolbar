@@ -33,7 +33,28 @@ using System.Text;
 using UnityEngine;
 
 namespace Toolbar {
-	[KSPAddonFixed(KSPAddon.Startup.MainMenu, true, typeof(InstallChecker))]
+    [KSPAddon(KSPAddon.Startup.Instantly, true)]
+    internal class Startup : MonoBehaviour
+    {
+        private void Start()
+        {
+            string v = "n/a";
+            AssemblyTitleAttribute attributes = (AssemblyTitleAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyTitleAttribute), false);
+            string title = attributes?.Title;
+            if (title == null)
+            {
+                title = "TitleNotAvailable";
+            }
+            v = Assembly.GetExecutingAssembly().FullName;
+            if (v == null)
+            {
+                v = "VersionNotAvailable";
+            }
+            Debug.Log("[" + title + "] Version " + v);
+        }
+    }
+
+    [KSPAddonFixed(KSPAddon.Startup.MainMenu, true, typeof(InstallChecker))]
 	internal class InstallChecker : MonoBehaviour {
 		internal void Start() {
 			string executingAssemblyName = Assembly.GetExecutingAssembly().GetName().Name;

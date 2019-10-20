@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BDDFDD67-E023-41EA-B8F1-559996B9ADAE}</ProjectGuid>
+    <ProjectGuid>{E258AB2C-E2BB-4ACA-B902-C98582041F69}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestButtons</RootNamespace>
-    <AssemblyName>TestButtons</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>ToolbarWrapper</RootNamespace>
+    <AssemblyName>ToolbarWrapper</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -21,11 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <Prefer32Bit>false</Prefer32Bit>
-    <Prefer32Bit>false</Prefer32Bit>
-    <Prefer32Bit>false</Prefer32Bit>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,27 +29,10 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <Prefer32Bit>false</Prefer32Bit>
-    <Prefer32Bit>false</Prefer32Bit>
-    <Prefer32Bit>false</Prefer32Bit>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BoxDrawable.cs" />
-    <Compile Include="FlightMapVisibility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestButtons.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Toolbar\Toolbar.csproj">
-      <Project>{e48dd7e6-5016-4ecf-a2c8-73a40beac326}</Project>
-      <Name>Toolbar</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="etc\icon.png" />
-    <Content Include="etc\img_buttonTypeMNode.png" />
+    <Compile Include="ToolbarWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
