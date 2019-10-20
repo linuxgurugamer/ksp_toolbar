@@ -71,13 +71,15 @@ namespace Toolbar
         }
 
         private Vector2 size_ = UNSIZED;
+        private bool initted = false;
         private int oldSavedScale = 24;
         internal Vector2 Size
         {
             get
             {
-                if (size_.Equals(UNSIZED) || (toolbar != null && oldSavedScale != toolbar.savedScale))
+                if (!initted || (toolbar != null && oldSavedScale != toolbar.savedScale))
                 {
+                    initted = true;
                     if (toolbar != null)
                     {
                         oldSavedScale = toolbar.savedScale;
@@ -149,7 +151,6 @@ namespace Toolbar
                         }
                         else
                         {
-                            Log.info("TexturePath: " + command.TexturePath);
                             tmptexture_ = Utils.GetTexture(command.TexturePath);
                         }
                         if (tmptexture_ != null)
@@ -384,7 +385,6 @@ namespace Toolbar
                 GUI.enabled = enabled && command.Enabled;
                 var s = Style;
                 s.fontSize = Style.fontSize * oldSavedScale / 24;
-
                 bool clicked = GUI.Button(rect, Content, s);
 
                 GUI.enabled = oldEnabled;

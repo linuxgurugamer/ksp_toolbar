@@ -817,7 +817,7 @@ namespace Toolbar
             float widestLineWidth = float.MinValue;
             float currentLineWidth = 0;
             foreach (Button button in buttons)
-            {
+            {;
                 if (isEffectivelyUserVisible(button) && !button.Equals(dropdownMenuButton))
                 {
                     if (((x + button.Size.x) > (rect.width - PADDING)) && (lineHeight > 0))
@@ -1221,7 +1221,7 @@ namespace Toolbar
             else
             {
                 // add to toolbar
-                button.OnDestroy += buttonDestroyed;
+                button.OnDestroy += buttonDestroyed;              
                 buttons.Add(button);
                 visibleButtons.reset();
                 sortButtons(buttons, compareButtonsUserOrder);

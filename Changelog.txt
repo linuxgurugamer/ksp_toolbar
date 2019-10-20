@@ -116,3 +116,6 @@
 1.8.0.0
 	Updated for 1.8
 	Added Startup class
+
+1.8.0.1
+	Fixed buttons not displaying due to a change in the way floats are compared

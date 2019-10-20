@@ -162,7 +162,9 @@ namespace Toolbar {
             if (!Utils.TextureFileExists(filePath))
             {
                 if (GameDatabase.Instance.ExistsTexture(texturePath))
+                {
                     tmptexture = GameDatabase.Instance.GetTexture(texturePath, false);
+                }
                 else
                     Log.info("GetTexture, texture not found in GameDatabase: [" + texturePath + "]");
             }
