@@ -3,7 +3,6 @@
 1.7.15
 	Adoption by LGG
 	Rebuild for 1.3.1
-	Added Startup class
 
 1.7.16
 	Localization beta, thanks to forum user @CN_Warren
@@ -113,3 +112,7 @@
 
 1.7.22.2
 	Fixed issue with ScienceAlert & X-Science buttons on the toolbar being purple
+
+1.8.0.0
+	Updated for 1.8
+	Added Startup class
