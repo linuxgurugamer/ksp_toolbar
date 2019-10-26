@@ -123,6 +123,6 @@
 1.8.0.2
 	Updated MiniAVC to 1.4.0
 
-1.8.0.2
+1.8.0.3
 	Fixed buttons disappearing, related to previoius issue with buttons not displaying
 	Replaced "initted" flag with a nullable variable in Button.cs
