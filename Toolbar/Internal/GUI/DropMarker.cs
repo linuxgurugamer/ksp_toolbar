@@ -43,8 +43,8 @@ namespace Toolbar {
 		private bool styleInitialized;
 
 		internal void draw() {
-			if (Visible && !Rect.Equals(NO_POSITION)) {
-				initStyle();
+            if (Visible && !Rect.Equals(NO_POSITION)) {
+                initStyle();
 
 				GUI.Label(Rect, (string) null, style);
 			}

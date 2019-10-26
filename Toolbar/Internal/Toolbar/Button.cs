@@ -70,16 +70,14 @@ namespace Toolbar
             }
         }
 
-        private Vector2 size_ = UNSIZED;
-        private bool initted = false;
+        private Vector2? size_ = null;
         private int oldSavedScale = 24;
         internal Vector2 Size
         {
             get
             {
-                if (!initted || (toolbar != null && oldSavedScale != toolbar.savedScale))
+                if (size_ == null || (toolbar != null && oldSavedScale != toolbar.savedScale))
                 {
-                    initted = true;
                     if (toolbar != null)
                     {
                         oldSavedScale = toolbar.savedScale;
@@ -100,12 +98,16 @@ namespace Toolbar
                     {
                         var s = Style;
                         s.fontSize = Style.fontSize * oldSavedScale / 24;
-                        size_ = s.CalcSize(Content);
-                        size_.x += s.padding.left + s.padding.right;
-                        size_.y += s.padding.top + s.padding.bottom;
+                        var tmpsize_ = s.CalcSize(Content);
+                        tmpsize_.x += s.padding.left + s.padding.right;
+                        tmpsize_.y += s.padding.top + s.padding.bottom;
+                        size_ = tmpsize_;
                     }
                 }
-                return size_;
+                if (size_ != null)
+                    return (Vector2)size_;
+                else
+                    return UNSIZED;
             }
         }
 
@@ -357,7 +359,7 @@ namespace Toolbar
             texture_ = null;
             content_ = null;
             style_ = null;
-            size_ = UNSIZED;
+            size_ = null;
         }
 
         internal static Button createToolbarDropdown()
