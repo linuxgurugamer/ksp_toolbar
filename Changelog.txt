@@ -126,3 +126,6 @@
 1.8.0.3
 	Fixed buttons disappearing, related to previoius issue with buttons not displaying
 	Replaced "initted" flag with a nullable variable in Button.cs
+
+1.8.0.4
+	Updated MiniAVC.dll to 1.4.0.2 to fix a nasty CTD
