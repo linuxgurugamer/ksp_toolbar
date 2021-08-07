@@ -321,6 +321,7 @@ namespace Toolbar {
 		}
 
 		private void fireChange() {
+            Log.info("Command.fireChange()");
 			if (OnChange != null) {
 				OnChange();
 			}

@@ -149,10 +149,14 @@ namespace Toolbar
                                 else if (command.TexturePath != null)
                                     t = command.TexturePath;
                             }
+                            //Debug.Log("Texture, t: [" + t + "], toolbar.adjustedSavedScale: " + toolbar.adjustedSavedScale);
+                            //Debug.Log("command.BigTexturePath: " + command.BigTexturePath);
+                            //Debug.Log("command.TexturePath: " + command.TexturePath);
                             tmptexture_ = Utils.GetTexture(t);
                         }
                         else
                         {
+                            //Debug.Log("Texture, command.TexturePath: [" + command.TexturePath + "]");
                             tmptexture_ = Utils.GetTexture(command.TexturePath);
                         }
                         if (tmptexture_ != null)

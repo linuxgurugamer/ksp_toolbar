@@ -1375,6 +1375,7 @@ namespace Toolbar
 
         private void fireChange()
         {
+            Log.info("Toolbar.FireChange");
             if (OnChange != null)
             {
                 OnChange();

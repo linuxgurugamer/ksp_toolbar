@@ -83,7 +83,8 @@ namespace Toolbar {
 
 		// only executed once, use for things not allowed to execute in the constructor
 		private void Awake() {
-			SETTINGS_FILE = KSPUtil.ApplicationRootPath + "GameData/toolbar-settings.dat";
+			Utils.InitRootPath();
+			SETTINGS_FILE = Utils.RootPath + "GameData/toolbar-settings.dat";
 			DontDestroyOnLoad(this);
 			loadSettings(ToolbarGameScene.MAINMENU);
 		}
@@ -136,16 +137,19 @@ namespace Toolbar {
 			ToolbarGameScene scene = ToolbarGameScenes.getCurrent();
 			if (scene != gameScene) {
 				gameScene = scene;
+                Log.info("handleGameSceneChange");
 				gameSceneChanged(scene);
 			}
 		}
 
 		private void toolbarChanged() {
+            Log.info("toolbarChanged()");
 			saveSettings();
 		}
 
 		private void gameSceneChanged(ToolbarGameScene scene) {
 			if (isRelevantGameScene(scene)) {
+                Log.info("gameSceneChanged");
 				loadSettings(scene);
 			}
 		}
@@ -162,6 +166,7 @@ namespace Toolbar {
 
 			bool checkForUpdates = true;
 
+            Log.info("loadSettings(ToolbarGameScene scene)");
 			ConfigNode root = loadSettings();
 			if (root.HasNode("toolbars")) {
 				ConfigNode toolbarsNode = root.GetNode("toolbars");
@@ -191,6 +196,7 @@ namespace Toolbar {
 		}
 
 		private ConfigNode loadSettings() {
+            Log.info("loadSettings()");
 			if (settings == null) {
 				settings = ConfigNode.Load(SETTINGS_FILE) ?? new ConfigNode();
 			}
@@ -227,12 +233,14 @@ namespace Toolbar {
 		}
 
 		private void saveSettings() {
+            Log.info("saveSettings()");
 			saveSettings(gameScene);
 		}
 
 		private void saveSettings(ToolbarGameScene scene) {
 			Log.info("saving settings (game scene: {0})", scene);
 
+            Log.info("saveSettings(ToolbarGameScene scene)");
 			ConfigNode root = loadSettings();
 			ConfigNode toolbarsNode = root.getOrCreateNode("toolbars");
 
@@ -275,6 +283,7 @@ namespace Toolbar {
 					ConfigNode sceneNode = toolbarsNode.GetNode(scene);
 					if (sceneNode.HasNode(toolbarId)) {
 						sceneNode.RemoveNode(toolbarId);
+                        Log.info("destroyToolbar(Toolbar toolbar)");
 						saveSettings();
 					}
 				}

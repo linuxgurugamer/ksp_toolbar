@@ -26,6 +26,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using System;
 using System.IO;
 
+using System.Reflection;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,21 +35,28 @@ using UnityEngine;
 using DDSHeaders;
 
 
-namespace Toolbar {
-	internal static class Utils {
-		internal static Vector2 getMousePosition() {
-			Vector3 mousePos = Input.mousePosition;
-			return new Vector2(mousePos.x, Screen.height - mousePos.y).clampToScreen();
-		}
+namespace Toolbar
+{
+    internal static class Utils
+    {
+        internal static Vector2 getMousePosition()
+        {
+            Vector3 mousePos = Input.mousePosition;
+            return new Vector2(mousePos.x, Screen.height - mousePos.y).clampToScreen();
+        }
 
-		internal static bool isPauseMenuOpen() {
-			// PauseMenu.isOpen may throw NullReferenceException on occasion, even if HighLogic.LoadedScene==GameScenes.FLIGHT
-			try {
-				return (HighLogic.LoadedScene == GameScenes.FLIGHT) && PauseMenu.isOpen;
-			} catch {
-				return false;
-			}
-		}
+        internal static bool isPauseMenuOpen()
+        {
+            // PauseMenu.isOpen may throw NullReferenceException on occasion, even if HighLogic.LoadedScene==GameScenes.FLIGHT
+            try
+            {
+                return (HighLogic.LoadedScene == GameScenes.FLIGHT) && PauseMenu.isOpen;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
 
         //
@@ -108,7 +117,7 @@ namespace Toolbar {
                                 return false;
 
 
-                                tex = LoadTextureDXT(bytes, tf);
+                            tex = LoadTextureDXT(bytes, tf);
                         }
                         else
                             tex.LoadImage(System.IO.File.ReadAllBytes(path));
@@ -161,9 +170,12 @@ namespace Toolbar {
             string filePath = TexPathname(texturePath);
             if (!Utils.TextureFileExists(filePath))
             {
+                //Debug.Log("GetTexture, filePath: [" + filePath + "] not found, trying game database");
                 if (GameDatabase.Instance.ExistsTexture(texturePath))
                 {
                     tmptexture = GameDatabase.Instance.GetTexture(texturePath, false);
+                    if (tmptexture == null)
+                        Debug.Log("GetTexture, tmptexture is null after checking GameDatabase: [" + texturePath + "]");
                 }
                 else
                     Log.info("GetTexture, texture not found in GameDatabase: [" + texturePath + "]");
@@ -173,7 +185,7 @@ namespace Toolbar {
                 tmptexture = GetTextureFromFile(texturePath, false);
 
                 if (tmptexture == null)
-                    Log.info("GetTexture, texture not found, texturePath: " + texturePath);
+                    Log.info("GetTexture, texture not found after check for file, texturePath: " + texturePath);
             }
             return tmptexture;
         }
@@ -192,9 +204,24 @@ namespace Toolbar {
             return false;
         }
 
+        static String rootPath;
+        static public String RootPath {  get { return rootPath; } }
+
+
+        internal static void InitRootPath()
+        {
+            string s = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            rootPath = s.Substring(0, s.IndexOf("GameData"));
+        }
+
+
         internal static string TexPathname(string path)
         {
-            return  KSPUtil.ApplicationRootPath + "GameData/" + path;
+            //Debug.Log("TexPathname, GetExecutingAssembly: " + Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+            //Debug.Log("TexPathname, ApplicationRootPath: " + KSPUtil.ApplicationRootPath);
+            //return  KSPUtil.ApplicationRootPath + "GameData/" + path;
+
+            return RootPath + "GameData/" + path;
         }
 
         internal static Texture2D GetTextureFromFile(string path, bool b)

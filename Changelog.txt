@@ -132,3 +132,9 @@
 
 1.8.0.5
 	Really did the MiniAVC update
+
+1.8.0.6 
+	Created new constant Utils.RootPath to replace the KSPUtil.ApplicationRootPath
+	Renamed DLL for CKAN compatibility
+	Added AssemblyFileVersion
+	Updated version file for 1.12
