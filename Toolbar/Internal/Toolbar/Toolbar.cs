@@ -1781,6 +1781,7 @@ namespace Toolbar
                         newSavedFolderSettings.Add(entry.Key, new FolderSettings()
                         {
                             toolTip = savedFolderSettings[entry.Key].toolTip,
+                            texturePath = savedFolderSettings[entry.Key].texturePath,
                             buttons = folderButtonIds
                         });
                     }
