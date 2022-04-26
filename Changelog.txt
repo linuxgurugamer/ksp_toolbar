@@ -141,3 +141,8 @@
 
 1.8.0.7
 	Reverted DLL renaming
+
+1.8.0.8
+	Thanks to github user @KvaNTy for this:
+		On loading settings, code was checking wrong file-path for texture.
+		And when dragging buttons into folder, code for saving folder's icon been forgotten.
