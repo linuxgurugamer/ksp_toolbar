@@ -1337,7 +1337,7 @@ namespace Toolbar
 
         private bool textureExists(string texturePath)
         {
-            return Utils.TextureFileExists(texturePath);
+            return Utils.TextureFileExists(Utils.TexPathname(texturePath));
         }
 
         internal void saveSettings(ConfigNode toolbarNode)
@@ -1781,6 +1781,7 @@ namespace Toolbar
                         newSavedFolderSettings.Add(entry.Key, new FolderSettings()
                         {
                             toolTip = savedFolderSettings[entry.Key].toolTip,
+                            texturePath = savedFolderSettings[entry.Key].texturePath,
                             buttons = folderButtonIds
                         });
                     }
