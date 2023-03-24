@@ -146,3 +146,7 @@
 	Thanks to github user @KvaNTy for this:
 		On loading settings, code was checking wrong file-path for texture.
 		And when dragging buttons into folder, code for saving folder's icon been forgotten.
+
+1.8.1
+	Thanks to github user @radj307 for this:
+		Completely rewrote the image loading and path resolution functions used by Utils.cs
