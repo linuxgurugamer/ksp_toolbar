@@ -150,3 +150,6 @@
 1.8.1
 	Thanks to github user @radj307 for this:
 		Completely rewrote the image loading and path resolution functions used by Utils.cs
+
+1.8.1.1
+	Disabled log spam of unnecessary warning and info messages

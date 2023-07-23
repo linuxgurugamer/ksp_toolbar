@@ -224,6 +224,10 @@ namespace Toolbar
             //Debug.Log("TexPathname, ApplicationRootPath: " + KSPUtil.ApplicationRootPath);
             //return  KSPUtil.ApplicationRootPath + "GameData/" + path;
 
+            Log.info("TexPathname, path: " + path);
+            if (path == "")
+                Log.info("TexPathname StackTrace: " + Environment.StackTrace);
+
             string fullpath = RootPath + "GameData/" + path;
 
             if (resolvePath) // fallback to checking each extension type

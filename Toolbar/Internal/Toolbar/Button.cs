@@ -156,7 +156,7 @@ namespace Toolbar
                         }
                         else
                         {
-                            //Debug.Log("Texture, command.TexturePath: [" + command.TexturePath + "]");
+                            Log.info("Texture, command.TexturePath: [" + command.TexturePath + "]");
                             tmptexture_ = Utils.GetTexture(command.TexturePath);
                         }
                         if (tmptexture_ != null)
@@ -201,6 +201,19 @@ namespace Toolbar
                         else
                         {
                             Log.error("button texture not found: {0}", command.TexturePath);
+                            Log.error("Current Dir: " + System.IO.Directory.GetCurrentDirectory());
+                            string filePath = Utils.TexPathname(command.TexturePath);
+                            string dir = Path.GetDirectoryName(filePath);
+                            Log.error("dir: " + dir);
+                            Log.error("filePath: " + filePath);
+                            
+                            var files = System.IO.Directory.GetFiles(dir);
+                            foreach ( var file in files ) 
+                            {
+                                Log.error("file: " + file);
+                            }
+
+
                             texture_ = BrokenButtonTexture;
                         }
                     }

@@ -87,12 +87,20 @@ namespace Toolbar {
 					case LogLevel.DEBUG:
 						goto case LogLevel.INFO;
 					case LogLevel.INFO:
+#if DEBUG
 						logMethod = Debug.Log;
 						break;
+#else
+						return;
+#endif
 
 					case LogLevel.WARN:
+#if DEBUG
 						logMethod = Debug.LogWarning;
 						break;
+#else
+						return;
+#endif
 
 					case LogLevel.ERROR:
 						logMethod = Debug.LogError;
