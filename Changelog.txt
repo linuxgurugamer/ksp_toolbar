@@ -153,3 +153,7 @@
 
 1.8.1.1
 	Disabled log spam of unnecessary warning and info messages
+
+1.8.1.2
+	Fix version file to use github for version updates
+	Copy webpage to README.md
